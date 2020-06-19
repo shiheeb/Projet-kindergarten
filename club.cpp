@@ -1,144 +1,54 @@
 #include "club.h"
-#include <QString>
-#include <QMessageBox>
+#include <QDebug>
+#include "connexion.h"
 club::club()
 {
-
-
-id="";
 nom="";
-enca="";
-numtt="";
-datee="";
+id=0;
+prix=0;
+num_salle=0;
 }
-
-club::club(QString id , QString nom ,QString enca,QString datee,QString numtt)
+club::club(QString nom,int id,int prix,int num_salle)
 {
-
-    this->id=id ;
-    this->nom=nom ;
-    this->datee=datee ;
-    this->enca=enca ;
-    this->numtt=numtt ;
-
-
-
-
-
+  this->nom=nom;
+  this->id=id;
+  this->prix=prix;
+  this->num_salle=num_salle;
 }
-QString  club::get_nom()
-{ return nom ;}
-QString club::get_enca()
-{return enca;}
-QString club::get_id()
-{return id ;}
-QString club::get_datee()
-{return datee ;}
-QString club::get_numtt()
-{return numtt ;}
+QString club::get_nom(){return  nom;}
+int club::get_id(){return  id;}
+int club::get_prix(){return  prix;}
+int club::get_num_salle(){return  num_salle;}
 
-
-bool club::ajouter_c()
+bool club::ajouter()
 {
+QSqlQuery query;
+QString res= QString::number(id);
+query.prepare("INSERT INTO club (NOM, ID, PRIX, NUM_SALLE) "
+                    "VALUES (:nom, :id, :prix, :num_salle)");
+query.bindValue(":nom", nom);
+query.bindValue(":id", res);
+query.bindValue(":prix", prix);
+query.bindValue(":num_salle", num_salle);
 
-    QSqlQuery query ;
-
-    query.prepare("INSERT INTO club (id,nom,datee,enca,numtt)" "VALUES (:id , :nom , :datee , :enca ,:numtt)");
-
-    query.bindValue(":id",id);
-    query.bindValue(":nom",nom);
-    query.bindValue(":datee",datee);
-    query.bindValue(":enca",enca);
-    query.bindValue(":numtt",numtt);
-
-
-    return query.exec();
-
-}
-QSqlQueryModel * club::afficher_c()
-{
-QSqlQueryModel * model=new QSqlQueryModel();
-model->setQuery("select *from club");
-
-model->setHeaderData(0,Qt::Horizontal ,QObject::tr("id"));
-model->setHeaderData(1,Qt::Horizontal ,QObject::tr("nom"));
-model->setHeaderData(2,Qt::Horizontal ,QObject::tr("datee"));
-model->setHeaderData(3,Qt::Horizontal ,QObject::tr("enca"));
-model->setHeaderData(4,Qt::Horizontal ,QObject::tr("numtt"));
-
-return model ;
-}
-bool club::supprimer_c(int id)
-{
-    QSqlQuery query;
-    QString res=QString::number(id);
-    query.prepare("delete from club where ID=:id");
-    query.bindValue(":id",id);
-    return query.exec();
-
+return    query.exec();
 }
 
-bool club::modifier_c(club p)
-{
-    QSqlQuery query;
-
-
-    query.prepare("UPDATE club SET  nom= :nom,enca= :enca,datee = :datee,numtt= :numtt WHERE id= :id");
-
-    query.bindValue(":id",p.get_id());
-    query.bindValue(":nom",p.get_nom());
-    query.bindValue(":datee",p.get_datee());
-    query.bindValue(":enca",p.get_enca());
-    query.bindValue(":numtt",p.get_numtt());
-
-    return query.exec();
-}
-QSqlQueryModel * club::afficher_clublist()
+QSqlQueryModel * club::afficher()
 {QSqlQueryModel * model= new QSqlQueryModel();
-
-model->setQuery("select nom from club");
-model->setHeaderData(0, Qt::Horizontal, QObject::tr("id"));
+model->setQuery("select * from club");
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("Nom "));
+model->setHeaderData(1, Qt::Horizontal, QObject::tr("ID"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("Prix "));
+model->setHeaderData(3, Qt::Horizontal, QObject::tr("Num_salle"));
     return model;
 }
 
-
-QSqlQueryModel * club::rechercher_c(QSqlQuery q)
+bool club::supprimer(int idd)
 {
-    QSqlQueryModel *model= new QSqlQueryModel();
-
-    model->setQuery(q);
-    return (model);
+QSqlQuery query;
+QString res= QString::number(idd);
+query.prepare("Delete from club where ID = :id ");
+query.bindValue(":id", res);
+return    query.exec();
 }
-bool club::verif_idc(QString ch_id){
-   bool test=true;
-   int i;
-   if(ch_id.length()!=8){
-      test=false;
-      return  test;
-   }else{
-       for(i=0;i<ch_id.length();i++){
-           if(!((ch_id[i]>='0')&&(ch_id[i]<='9'))){
-               test=false;
-               return  test;
-       }
-       }
-   }
-return test;
-}
-bool club::verif_nom(QString nom){
-    bool test=true;
-    int i;
-    if(nom.length()>20){
-       test=false;
-       return  test;
-    }else{
-        for(i=0;i<nom.length();i++){
-            if(!(((nom[i]>='A')&&(nom[i]<='Z'))||((nom[i]>='a')&&(nom[i]<='z')))){
-                test=false;
-                return  test;
-        }
-    }
-  }
-    return  test;
-}
-

@@ -1,19 +1,22 @@
 #include "connexion.h"
-#include <QSqlError>
-Connexion::Connexion(){
-                      }
+
+Connexion::Connexion()
+{}
+
 bool Connexion::ouvrirConnexion()
-{bool test=false;
-    QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-                           db.setDatabaseName("Dhiya");
-                           db.setUserName("dhiya");//inserer nom de l'utilisateur
-                           db.setPassword("esprit18");//inserer mot de passe de cet utilisateur
-
-if (db.open())
-    test=true;
+{
+bool test=false;
+    db=QSqlDatabase::addDatabase("QODBC");
+db.setDatabaseName("Source_Projet2A");
+db.setUserName("user2");//inserer nom de l'utilisateur
+db.setPassword("user2");//inserer mot de passe de cet utilisateur
 
 
-return  test;
+if (db.open()) test = true;
+
+
+return test;
+
 }
 void Connexion::fermerConnexion()
 {db.close();}

@@ -13,6 +13,4 @@ public:
 
 };
 
-
-
 #endif // CONNEXION_H

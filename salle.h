@@ -1,23 +1,21 @@
-#ifndef CLUB_H
-#define CLUB_H
+#ifndef SALLE_H
+#define SALLE_H
 #include <QString>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
-class club
+class salle
 {public:
-    club();
-    club(QString,int,int,int);
+    salle();
+    salle(QString,int,int);
     QString get_nom();
-    int get_id();
-    int get_prix();
-    int get_num_salle();
+    int get_num();
+    int get_max();
     bool ajouter();
     QSqlQueryModel * afficher();
     bool supprimer(int);
 private:
     QString nom;
-    int id,prix,num_salle;
+    int num,max;
 };
 
-
-#endif // CLUB_H
+#endif // SALLE_H
