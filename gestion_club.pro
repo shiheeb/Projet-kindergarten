@@ -1,4 +1,6 @@
-QT       += core gui sql network printsupport
+QT       += core gui network sql printsupport serialport charts  \
+            multimedia multimediawidgets
+QT += multimedia widgets texttospeech
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -34,7 +36,8 @@ SOURCES += \
     mimetext.cpp \
     popup.cpp \
     quotedprintable.cpp \
-    smtpclient.cpp
+    smtpclient.cpp \
+    statisitique_club.cpp
 
 HEADERS += \
     SmtpMime \
@@ -55,10 +58,12 @@ HEADERS += \
     popup.h \
     quotedprintable.h \
     smtpclient.h \
-    smtpexports.h
+    smtpexports.h \
+    statisitique_club.h
 
 FORMS += \
-    gestion_club.ui
+    gestion_club.ui \
+    statisitique_club.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -83,7 +83,7 @@ bool club::modifier_c(club p)
     QSqlQuery query;
 
 
-    query.prepare("UPDATE club SET  nom= :nom,enca = :enca,datee= :datee,numtt= :numtt WHERE id= :id");
+    query.prepare("UPDATE club SET  nom= :nom,enca= :enca,datee = :datee,numtt= :numtt WHERE id= :id");
 
     query.bindValue(":id",p.get_id());
     query.bindValue(":nom",p.get_nom());

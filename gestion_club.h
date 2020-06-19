@@ -65,6 +65,16 @@ private slots:
 
     void on_historique_evenements_clicked();
 
+    void on_historique_evenements_3_clicked();
+
+    void on_comboBox_m_3_activated(const QString &arg1);
+
+    void on_lineEdit_nc_cursorPositionChanged(int arg1, int arg2);
+
+    void on_recipients_cursorPositionChanged(int arg1, int arg2);
+
+    void on_pushButton_4_clicked();
+
 private:
     Ui::gestion_club *ui;
      PopUp *popUp;

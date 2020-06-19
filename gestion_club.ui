@@ -13,6 +13,83 @@
   <property name="windowTitle">
    <string>gestion_club</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QTableView {
+    selection-background-color: qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,
+                                stop: 0 #FF92BB, stop: 1 white);
+background-color: Silver ;
+}
+.QPushButton{
+font: 75 10pt &quot;Microsoft YaHei UI&quot;;
+font-weight: bold;
+color: white;
+background-color: red ;
+border-style: solid;
+border-radius:21px;
+border: 1px solid white;
+border-radius: 15px;
+}
+.QPushButton:hover {
+   border: solid #DD380D 4px;
+   background: Maroon;
+   background-image: -webkit-linear-gradient(top, #1E62D0, #3D94F6);
+   background-image: -moz-linear-gradient(top, #1E62D0, #3D94F6);
+   background-image: -ms-linear-gradient(top, #1E62D0, #3D94F6);
+   background-image: -o-linear-gradient(top, #1E62D0, #3D94F6);
+   background-image: linear-gradient(to bottom, #1E62D0, #3D94F6);
+   -webkit-border-radius: 30px;
+   -moz-border-radius: 30px;
+   border-radius: 30px;
+   text-decoration: none;
+border: 2px solid black;
+border-radius: 15px;
+}
+QLineEdit{ background-color:Silver;
+border: 2px solid gray;
+border-radius: 10px;
+padding: 0 8px;
+selection-background-color: darkgray;
+font-size: 16px;}
+QLineEdit:focus { background-color:rgb(192, 192, 255);}
+
+QTextEdit, QListView {
+    background-color: white;
+    background-image: url(draft.png);
+    background-attachment: scroll;
+}
+QRadioButton::indicator {
+    width: 13px;
+    height: 13px;
+}
+QtextBrowser{
+   background-color: grey;  
+
+}
+QDateEdit
+{
+    background-color: white;
+    border-style: solid;
+    border-width: 4px;
+    border-color: rgb(100,100,100);
+    spacing: 5px; 
+}
+
+
+QDateEdit::drop-down {
+    image: url(:/new/myapp/cbarrowdn.png);
+    width:50px;
+    height:15px;
+    subcontrol-position: right top;
+    subcontrol-origin:margin;
+    background-color: white;
+    border-style: solid;
+    border-width: 4px;
+    border-color: rgb(100,100,100);
+   spacing: 5px; 
+}
+ 
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
@@ -24,7 +101,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -35,16 +112,6 @@
        <rect>
         <x>120</x>
         <y>10</y>
-        <width>121</width>
-        <height>41</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QDateEdit" name="dateEdit_evenements">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>110</y>
         <width>121</width>
         <height>41</height>
        </rect>
@@ -75,8 +142,8 @@
        <rect>
         <x>80</x>
         <y>270</y>
-        <width>75</width>
-        <height>23</height>
+        <width>101</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
@@ -88,8 +155,8 @@
        <rect>
         <x>80</x>
         <y>310</y>
-        <width>75</width>
-        <height>23</height>
+        <width>101</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
@@ -101,8 +168,8 @@
        <rect>
         <x>80</x>
         <y>350</y>
-        <width>75</width>
-        <height>23</height>
+        <width>101</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
@@ -118,8 +185,85 @@
         <height>23</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QTableView {
+    selection-background-color: qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,
+                                stop: 0 #FF92BB, stop: 1 white);
+background-color: Silver ;
+}
+.QPushButton{
+font: 75 10pt &quot;Microsoft YaHei UI&quot;;
+font-weight: bold;
+color: white;
+background-color: red ;
+border-style: solid;
+border-radius:21px;
+border: 1px solid white;
+border-radius: 15px;
+}
+.QPushButton:hover {
+   border: solid #DD380D 4px;
+   background: Maroon;
+   background-image: -webkit-linear-gradient(top, #1E62D0, #3D94F6);
+   background-image: -moz-linear-gradient(top, #1E62D0, #3D94F6);
+   background-image: -ms-linear-gradient(top, #1E62D0, #3D94F6);
+   background-image: -o-linear-gradient(top, #1E62D0, #3D94F6);
+   background-image: linear-gradient(to bottom, #1E62D0, #3D94F6);
+   -webkit-border-radius: 30px;
+   -moz-border-radius: 30px;
+   border-radius: 30px;
+   text-decoration: none;
+border: 2px solid black;
+border-radius: 15px;
+}
+QLineEdit{ background-color:Silver;
+border: 2px solid gray;
+border-radius: 10px;
+padding: 0 8px;
+selection-background-color: darkgray;
+font-size: 16px;}
+QLineEdit:focus { background-color:rgb(192, 192, 255);}
+
+QTextEdit, QListView {
+    background-color: white;
+    background-image: url(draft.png);
+    background-attachment: scroll;
+}
+QRadioButton::indicator {
+    width: 13px;
+    height: 13px;
+}
+QtextBrowser{
+   background-color: grey;  
+
+}
+QDateEdit
+{
+    background-color: white;
+    border-style: solid;
+    border-width: 4px;
+    border-color: rgb(100,100,100);
+    spacing: 5px; 
+}
+
+
+QDateEdit::drop-down {
+    image: url(:/new/myapp/cbarrowdn.png);
+    width:50px;
+    height:15px;
+    subcontrol-position: right top;
+    subcontrol-origin:margin;
+    background-color: white;
+    border-style: solid;
+    border-width: 4px;
+    border-color: rgb(100,100,100);
+   spacing: 5px; 
+}
+ 
+</string>
+      </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>statistique</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_5">
@@ -241,12 +385,12 @@
        <rect>
         <x>20</x>
         <y>230</y>
-        <width>47</width>
-        <height>13</height>
+        <width>81</width>
+        <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>membre</string>
+       <string>nombre totale</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_6">
@@ -303,6 +447,16 @@
       </property>
       <property name="text">
        <string>Historique</string>
+      </property>
+     </widget>
+     <widget class="QDateTimeEdit" name="dateEdit_evenements">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>120</y>
+        <width>111</width>
+        <height>22</height>
+       </rect>
       </property>
      </widget>
     </widget>
@@ -447,7 +601,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>s</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEdit_nnbs">
@@ -581,6 +735,29 @@
        <string>print</string>
       </property>
      </widget>
+     <widget class="QTextBrowser" name="historique_club_3">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>10</y>
+        <width>181</width>
+        <height>151</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="historique_evenements_3">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>170</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Historique</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
@@ -599,11 +776,14 @@
        <string>E-mail</string>
       </property>
       <widget class="QLineEdit" name="recipients">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>100</x>
          <y>110</y>
-         <width>431</width>
+         <width>291</width>
          <height>20</height>
         </rect>
        </property>
@@ -663,7 +843,7 @@
         <rect>
          <x>100</x>
          <y>150</y>
-         <width>431</width>
+         <width>291</width>
          <height>20</height>
         </rect>
        </property>
@@ -714,7 +894,17 @@ p, li { white-space: pre-wrap; }
         </rect>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; color:#00007f;&quot;&gt;La Poste Tunisienne - Service Marketing&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; color:#00007f;&quot;&gt;La kidziiaaa&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox_m_3">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>110</y>
+         <width>101</width>
+         <height>31</height>
+        </rect>
        </property>
       </widget>
      </widget>

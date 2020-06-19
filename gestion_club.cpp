@@ -19,7 +19,8 @@
 #include <QDataStream>
 #include <QDesktopServices>
 #include"QTextDocumentWriter"
-
+#include "statisitique_club.h"
+#include "ui_statisitique_club.h"
 #include <QSqlQuery>
 #include <QDesktopServices>
 #include <QDialog>
@@ -56,9 +57,9 @@ gestion_club::gestion_club(QWidget *parent)
     ui->tableView_club->setModel(tmpclub.afficher_c());
      ui->tableView_membre->setModel(tmpmm.afficher_m());
      ui->comboBox_m->setModel(tmpclub.afficher_clublist());
-
+    ui->comboBox_m_3->setModel(tmpmm.afficher_memberlist());
         popUp = new PopUp();
-        popUp->setPopupText("Welcome to Hot Plus Plus");
+        popUp->setPopupText("Welcome kids");
         popUp->show();
 
 }
@@ -116,12 +117,12 @@ void gestion_club::on_pushButton_ajouter_clicked()
     ui->comboBox_m->setModel(model);
 
        qDebug()<<"table actualise";
-    QFile file("C:\\Users\\user\\h.txt");
+    QFile file("G:\\c++tri\\h.txt");
                    if (!file.open(QIODevice::WriteOnly | QIODevice::Append |QIODevice::Text))
                        return;
                    QTextStream cout(&file);
-                   //QString message2="\n L'historique des Fournisseurs à ajouter :"+id+" "+nom+" "+datee+" "+enca+" "+prix;
-                  // cout << message2;
+                   QString message2="\n L'historique des club à ajouter :"+id+" "+nom+" "+datee+" "+enca+" "+numtt;
+                   cout << message2;
 
     }
 
@@ -182,12 +183,13 @@ void gestion_club::on_pushButton_modifier_clicked()
 
     QString id =ui->lineEdit_id->text();
    QString nom=ui->lineEdit_nom->text();
+     QString datee= ui->dateEdit_evenements->text();
    QString enca= ui->lineEdit_enca->text();
-   QString datee= ui->dateEdit_evenements->text();
+
    QString numtt= ui->lineEdit_membre->text();
 
 
-    club p(id,nom,enca,datee,numtt);
+    club p(id,nom,datee,enca,numtt);
 
     bool test=false;
          if (id>0)test=tmpclub.modifier_c(p);
@@ -240,9 +242,17 @@ void gestion_club::on_pushButton_ajouter_2_clicked()
     else if(nbsc==""){
 
                         popUp = new PopUp();
-                                    popUp->setPopupText("l'id doit contenir 8 chiffre ");
+                                    popUp->setPopupText("l'id doitverif_email contenir 8 chiffre ");
                                     popUp->show();
          }
+    else if (m.verif_email(mail)==false){
+        popUp = new PopUp();
+                    popUp->setPopupText("l'id doit contenir un email  @ ");
+                    popUp->show();
+
+
+    }
+
     else{
 
     bool test=m.ajouter_m();
@@ -252,16 +262,16 @@ void gestion_club::on_pushButton_ajouter_2_clicked()
     ui->tableView_membre->setModel(tmpmm.afficher_m());
 
     QSqlQueryModel *model = new QSqlQueryModel();
-    model->setQuery("select nom from club");
-   ui->comboBox_m->setModel(model);
+    model->setQuery("select mail from member");
+   ui->comboBox_m_3->setModel(model);
 
        qDebug()<<"table actualise";
-    QFile file("C:\\Users\\dhia\\Desktop\\hhhzz\\dhia\\historique_evenements.txt");
+    QFile file("G:\\c++tri\\hm.txt");
                    if (!file.open(QIODevice::WriteOnly | QIODevice::Append |QIODevice::Text))
                        return;
                    QTextStream cout(&file);
-                   //QString message2="\n L'historique des Fournisseurs à ajouter :"+id+" "+nom+" "+date_e+" "+duree+" "+prix;
-                  // cout << message2;
+                   QString message2="\n L'historique de membre à ajouter :"+id+" "+nom+" "+nc+" "+nbsc+" "+mail;
+                   cout << message2;
 
     }
 
@@ -373,7 +383,7 @@ void gestion_club::on_lineEdit_4_cursorPositionChanged(int arg1, int arg2)
             q.prepare("select * from member WHERE ID like '"+ui->lineEdit_4->text()+"' OR  NOM like '"+ui->lineEdit_4->text()+"' OR nc like '"+ui->lineEdit_4->text()+"' ");
                 tmpmm.rechercher_m(q);
                    q.exec();
-                   model->setQuery(q);
+                    model->setQuery(q);
                    ui->tableView_membre->setModel(tmpmm.rechercher_m(q));
 }
 
@@ -606,7 +616,7 @@ void gestion_club::on_pushButton_9_clicked()
 }
 
 void gestion_club::on_historique_evenements_clicked()
-{ QFile file ("C:\\Users\\user\\h.txt");
+{ QFile file ("G:\\c++tri\\h.txt");
     if (!file.open(QIODevice::ReadOnly))
     {
         QMessageBox::information(0,"info",file.errorString());
@@ -616,5 +626,26 @@ void gestion_club::on_historique_evenements_clicked()
 
 }
 
+void gestion_club::on_historique_evenements_3_clicked()
+{
+    QFile file ("G:\\c++tri\\hm.txt");
+       if (!file.open(QIODevice::ReadOnly))
+       {
+           QMessageBox::information(0,"info",file.errorString());
+       }
+       QTextStream in (&file);
+       ui->historique_club_3->setText(in.readAll());
+}
+
+void gestion_club::on_comboBox_m_3_activated(const QString &arg1)
+{
+     ui->recipients->setText(arg1);
+}
 
 
+void gestion_club::on_pushButton_4_clicked()
+{
+    statisitique_club *s = new statisitique_club();
+           setWindowModality(Qt::WindowModal);
+           s->show();
+}

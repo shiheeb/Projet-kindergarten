@@ -94,8 +94,8 @@ bool member::modifier_m(member m)
 QSqlQueryModel * member::afficher_memberlist()
 {QSqlQueryModel * model= new QSqlQueryModel();
 
-model->setQuery("select id from member");
-model->setHeaderData(0, Qt::Horizontal, QObject::tr("id"));
+model->setQuery("select mail from member");
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("mail"));
     return model;
 }
 
@@ -140,3 +140,14 @@ bool member::verif_nom(QString nom){
     return  test;
 }
 
+bool member::verif_email(QString ch){
+   bool test=false;
+   int i;
+   for(i=0;i<ch.length();i++)
+   {
+       if(ch[i]=='@'){
+           test=true;
+       }
+   }
+   return  test;
+}

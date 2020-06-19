@@ -16,6 +16,7 @@ class member
     QString get_nom();
     QString get_nc();
     QString get_nbsc();
+    bool verif_email(QString );
 
     bool ajouter_m();
     QString get_membr();
