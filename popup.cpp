@@ -3,7 +3,7 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QDebug>
-#include <qlayout.h>
+
 PopUp::PopUp(QWidget *parent) : QWidget(parent)
 {
     setWindowFlags(Qt::FramelessWindowHint |

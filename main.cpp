@@ -1,30 +1,26 @@
-#include "gestion_club.h"
-#include"connexion.h"
+#include "mainwindow.h"
 #include <QApplication>
-#include"club.h"
-#include <QString>
 #include <QMessageBox>
+#include "cnx.h"
+#include <QtDebug>
 int main(int argc, char *argv[])
-{
-    QApplication a(argc, argv);
+{  QApplication a(argc, argv);
 
-    Connexion c;
+    Cnx c;
 
-    bool test=c.ouvrirConnexion();
-     gestion_club w;
-    if(test)
-    {w.show();
-        QMessageBox::critical(nullptr, QObject::tr("database is open"),
-                    QObject::tr("connection successful.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+  bool test=c.ouvrirConnexion();
+  MainWindow w;
+  if(test)
+  {w.show();
 
-}
-    else
-        QMessageBox::critical(nullptr, QObject::tr("database is not open"),
-                    QObject::tr("connection failed.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+      QMessageBox::critical(nullptr, QObject::tr("database is not open"),
+                  QObject::tr("connection avec succés.\n"
+                              "Click Cancel to exit."), QMessageBox::Cancel);
 
+  }
+  else
+      QMessageBox::critical(nullptr, QObject::tr("database is not open"),
+                  QObject::tr("connection failed.\n"
+                              "Click Cancel to exit."), QMessageBox::Cancel);
 
-
-    return a.exec();
-}
+    return a.exec();}

@@ -1,14 +1,5 @@
 #ifndef POPUP_H
 #define POPUP_H
-
-#include <QWidget>
-#include <QLabel>
-#include <QGridLayout>
-#include <QPropertyAnimation>
-#include <QTimer>
-#include <qlabel.h>
-#include <qpushbutton.h>
-#include <qlineedit.h>
 #include <QWidget>
 #include <QLabel>
 #include <QGridLayout>
